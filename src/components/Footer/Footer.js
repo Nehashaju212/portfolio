@@ -44,7 +44,7 @@ const Footer = () => {
               <div className="footer-links">
                 <div className="footer-column">
                   <h3 className="footer-title">Navigation</h3>
-                  <ul className="footer-list" role="list">
+                  <ul className="footer-list">
                     <li>
                       <a href="#about" aria-label="Navigate to About section">
                         About
@@ -70,7 +70,7 @@ const Footer = () => {
 
                 <div className="footer-column">
                   <h3 className="footer-title">Services</h3>
-                  <ul className="footer-list" role="list">
+                  <ul className="footer-list">
                     <li>UI/UX Design</li>
                     <li>Poster Design</li>
                     <li>Web Development</li>
@@ -81,7 +81,7 @@ const Footer = () => {
 
                 <div className="footer-column">
                   <h3 className="footer-title">Connect</h3>
-                  <ul className="footer-list" role="list">
+                  <ul className="footer-list">
                     <li>
                       <a
                         href="https://www.linkedin.com/in/nehashaju212"

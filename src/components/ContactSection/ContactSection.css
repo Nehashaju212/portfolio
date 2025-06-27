@@ -222,7 +222,7 @@
   padding: 1.6rem;
   backdrop-filter: blur(20px);
   transition: all 0.3s ease;
-  min-height: 420px;
+  min-height: 520px;
 }
 
 .contact-form:hover {
@@ -232,6 +232,7 @@
 
 .form-group {
   margin-bottom: 1rem;
+  position: relative;
 }
 
 .form-row {
@@ -268,6 +269,24 @@
   position: relative;
 }
 
+/* Error state styles */
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+}
+
+.error-message {
+  display: block;
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+  animation: slideInUp 0.3s ease-out;
+}
+
 .form-group select {
   cursor: pointer;
   appearance: none;
@@ -295,6 +314,14 @@
   transform: translateY(-1px);
 }
 
+.form-group input.error:focus,
+.form-group select.error:focus,
+.form-group textarea.error:focus {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
 .form-group textarea {
   resize: vertical;
   min-height: 100px;
@@ -315,6 +342,12 @@
   transition: all 0.3s ease;
 }
 
+.form-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
 .form-submit::before {
   content: "";
   position: absolute;
@@ -326,11 +359,11 @@
   transition: left 0.5s ease;
 }
 
-.form-submit:hover::before {
+.form-submit:hover:not(:disabled)::before {
   left: 100%;
 }
 
-.form-submit:hover {
+.form-submit:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(122, 135, 251, 0.3);
 }

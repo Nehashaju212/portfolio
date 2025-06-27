@@ -109,7 +109,6 @@ const ProcessSection = () => {
         className="process-section section" 
         ref={sectionRef}
         aria-labelledby="process-heading"
-        role="region"
       >
         <div className="container">
           <header className="process-header">

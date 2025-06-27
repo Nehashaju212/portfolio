@@ -135,8 +135,9 @@
 }
 
 .about-section img {
-  loading: lazy;
-  decoding: async;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Accessibility improvements */

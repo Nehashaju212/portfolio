@@ -24,12 +24,14 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     project: "",
     budget: "",
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [feedback, setFeedback] = useState({ type: "", message: "" })
+  const [errors, setErrors] = useState({})
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const sectionRef = useRef(null)
 
@@ -37,38 +39,39 @@ const ContactSection = () => {
   const contactStructuredData = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": "Contact Neha Shaju - UI/UX Designer",
-    "description": "Get in touch with Neha Shaju for UI/UX design, web development, and poster design projects. Available for freelance opportunities worldwide.",
-    "url": "https://nehashaju.com/contact",
-    "mainEntity": {
+    name: "Contact Neha Shaju - UI/UX Designer",
+    description:
+      "Get in touch with Neha Shaju for UI/UX design, web development, and poster design projects. Available for freelance opportunities worldwide.",
+    url: "https://nehashaju.com/contact",
+    mainEntity: {
       "@type": "Person",
-      "name": "Neha Shaju",
-      "email": "nehashaju212@gmail.com",
-      "telephone": "+91 94958 16213",
-      "jobTitle": "UI/UX Designer & Computer Science Student",
-      "availableLanguage": ["English", "Hindi", "Malayalam"],
-      "serviceArea": {
+      name: "Neha Shaju",
+      email: "nehashaju212@gmail.com",
+      telephone: "+91 94958 16213",
+      jobTitle: "UI/UX Designer & Computer Science Student",
+      availableLanguage: ["English", "Hindi", "Malayalam"],
+      serviceArea: {
         "@type": "Place",
-        "name": "Worldwide"
+        name: "Worldwide",
       },
-      "offers": [
+      offers: [
         {
           "@type": "Service",
-          "name": "UI/UX Design",
-          "description": "User interface and user experience design services"
-        },
-        {
-          "@type": "Service", 
-          "name": "Web Development",
-          "description": "Frontend web development using React and modern technologies"
+          name: "UI/UX Design",
+          description: "User interface and user experience design services",
         },
         {
           "@type": "Service",
-          "name": "Poster Design", 
-          "description": "Creative poster and graphic design services"
-        }
-      ]
-    }
+          name: "Web Development",
+          description: "Frontend web development using React and modern technologies",
+        },
+        {
+          "@type": "Service",
+          name: "Poster Design",
+          description: "Creative poster and graphic design services",
+        },
+      ],
+    },
   }
 
   // Mouse tracking for interactive effects
@@ -119,11 +122,78 @@ const ContactSection = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Email validation function
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
+
+  // Phone validation function
+  const validatePhone = (phone) => {
+    const phoneRegex = /^[+]?[1-9][\d]{0,15}$/
+    return phoneRegex.test(phone.replace(/[\s\-$$$$]/g, ""))
+  }
+
+  // Form validation function
+  const validateForm = () => {
+    const newErrors = {}
+
+    // Name validation
+    if (!formData.name.trim()) {
+      newErrors.name = "Full name is required"
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = "Name must be at least 2 characters long"
+    }
+
+    // Email validation
+    if (!formData.email.trim()) {
+      newErrors.email = "Email address is required"
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = "Please enter a valid email address"
+    }
+
+    // Phone validation
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required"
+    } else if (!validatePhone(formData.phone)) {
+      newErrors.phone = "Please enter a valid phone number"
+    }
+
+    // Project validation
+    if (!formData.project) {
+      newErrors.project = "Please select a project type"
+    }
+
+    // Budget validation
+    if (!formData.budget) {
+      newErrors.budget = "Please select a budget range"
+    }
+
+    // Message validation
+    if (!formData.message.trim()) {
+      newErrors.message = "Project details are required"
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Please provide more details (at least 10 characters)"
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
   const handleInputChange = (e) => {
+    const { name, value } = e.target
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     })
+
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: "",
+      })
+    }
   }
 
   // Add interactive typing effect
@@ -135,6 +205,24 @@ const ContactSection = () => {
   const handleInputBlur = (e) => {
     e.target.style.transform = "translateY(0)"
     e.target.style.boxShadow = "none"
+
+    // Validate field on blur
+    const { name, value } = e.target
+    const fieldErrors = {}
+
+    if (name === "email" && value && !validateEmail(value)) {
+      fieldErrors.email = "Please enter a valid email address"
+    }
+    if (name === "phone" && value && !validatePhone(value)) {
+      fieldErrors.phone = "Please enter a valid phone number"
+    }
+
+    if (Object.keys(fieldErrors).length > 0) {
+      setErrors({
+        ...errors,
+        ...fieldErrors,
+      })
+    }
   }
 
   // Copy to clipboard functionality
@@ -180,6 +268,16 @@ const ContactSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setFeedback({ type: "", message: "" })
+
+    // Validate form before submission
+    if (!validateForm()) {
+      setFeedback({
+        type: "error",
+        message: "❌ Please fill in all required fields correctly.",
+      })
+      return
+    }
+
     setIsSubmitting(true)
 
     try {
@@ -199,6 +297,7 @@ const ContactSection = () => {
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
+        from_phone: formData.phone,
         project_type: formData.project,
         budget_range: formData.budget,
         message: formData.message,
@@ -224,10 +323,12 @@ const ContactSection = () => {
       setFormData({
         name: "",
         email: "",
+        phone: "",
         project: "",
         budget: "",
         message: "",
       })
+      setErrors({})
     } catch (error) {
       console.error("EmailJS Error:", error)
 
@@ -255,14 +356,11 @@ const ContactSection = () => {
   return (
     <>
       {/* SEO Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactStructuredData) }}
-      />
-      
-      <section 
-        id="contact" 
-        className="contact-section section" 
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactStructuredData) }} />
+
+      <section
+        id="contact"
+        className="contact-section section"
         ref={sectionRef}
         aria-labelledby="contact-heading"
         role="main"
@@ -271,7 +369,10 @@ const ContactSection = () => {
           <header className="contact-header">
             <div className="contact-title-section">
               <h1 id="contact-heading" className="section-title">
-                Have idea about project? <span className="highlight" aria-hidden="true">✦</span>
+                Have idea about project?{" "}
+                <span className="highlight" aria-hidden="true">
+                  ✦
+                </span>
               </h1>
               <p className="contact-subtitle">LET'S START DESIGNING YOUR PROJECT</p>
             </div>
@@ -290,13 +391,15 @@ const ContactSection = () => {
                 <div
                   className="contact-item"
                   onClick={() => copyToClipboard("nehashaju212@gmail.com", "Email")}
-                  onKeyDown={(e) => e.key === 'Enter' && copyToClipboard("nehashaju212@gmail.com", "Email")}
+                  onKeyDown={(e) => e.key === "Enter" && copyToClipboard("nehashaju212@gmail.com", "Email")}
                   title="Click to copy email"
                   role="button"
                   tabIndex="0"
                   aria-label="Email address: nehashaju212@gmail.com. Click to copy."
                 >
-                  <div className="contact-icon" aria-hidden="true">📧</div>
+                  <div className="contact-icon" aria-hidden="true">
+                    📧
+                  </div>
                   <div className="contact-text">
                     <span className="contact-label">Email</span>
                     <span className="contact-value">nehashaju212@gmail.com</span>
@@ -306,13 +409,15 @@ const ContactSection = () => {
                 <div
                   className="contact-item"
                   onClick={() => copyToClipboard("+91 94958 16213", "Phone")}
-                  onKeyDown={(e) => e.key === 'Enter' && copyToClipboard("+91 94958 16213", "Phone")}
+                  onKeyDown={(e) => e.key === "Enter" && copyToClipboard("+91 94958 16213", "Phone")}
                   title="Click to copy phone number"
                   role="button"
                   tabIndex="0"
                   aria-label="Phone number: +91 94958 16213. Click to copy."
                 >
-                  <div className="contact-icon" aria-hidden="true">📱</div>
+                  <div className="contact-icon" aria-hidden="true">
+                    📱
+                  </div>
                   <div className="contact-text">
                     <span className="contact-label">Phone</span>
                     <span className="contact-value">+91 94958 16213</span>
@@ -320,7 +425,9 @@ const ContactSection = () => {
                 </div>
 
                 <div className="contact-item" role="button" tabIndex="0">
-                  <div className="contact-icon" aria-hidden="true">📍</div>
+                  <div className="contact-icon" aria-hidden="true">
+                    📍
+                  </div>
                   <div className="contact-text">
                     <span className="contact-label">Location</span>
                     <span className="contact-value">Available Worldwide</span>
@@ -380,14 +487,11 @@ const ContactSection = () => {
             </div>
 
             <div className="contact-form-container">
-              <form 
-                className="contact-form" 
-                onSubmit={handleSubmit}
-                aria-labelledby="contact-form-heading"
-                noValidate
-              >
-                <h2 id="contact-form-heading" className="sr-only">Contact Form</h2>
-                
+              <form className="contact-form" onSubmit={handleSubmit} aria-labelledby="contact-form-heading" noValidate>
+                <h2 id="contact-form-heading" className="sr-only">
+                  Contact Form
+                </h2>
+
                 <div className="form-group">
                   <label htmlFor="name">Full Name *</label>
                   <input
@@ -401,23 +505,59 @@ const ContactSection = () => {
                     required
                     aria-describedby="name-error"
                     autoComplete="name"
+                    className={errors.name ? "error" : ""}
                   />
+                  {errors.name && (
+                    <span className="error-message" id="name-error">
+                      {errors.name}
+                    </span>
+                  )}
                 </div>
 
-                <div className="form-group">
-                  <label htmlFor="email">Email Address *</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    onFocus={handleInputFocus}
-                    onBlur={handleInputBlur}
-                    required
-                    aria-describedby="email-error"
-                    autoComplete="email"
-                  />
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="email">Email Address *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      onFocus={handleInputFocus}
+                      onBlur={handleInputBlur}
+                      required
+                      aria-describedby="email-error"
+                      autoComplete="email"
+                      className={errors.email ? "error" : ""}
+                    />
+                    {errors.email && (
+                      <span className="error-message" id="email-error">
+                        {errors.email}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="phone">Phone Number *</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      onFocus={handleInputFocus}
+                      onBlur={handleInputBlur}
+                      required
+                      aria-describedby="phone-error"
+                      autoComplete="tel"
+                      className={errors.phone ? "error" : ""}
+                    />
+                    {errors.phone && (
+                      <span className="error-message" id="phone-error">
+                        {errors.phone}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <div className="form-row">
@@ -432,6 +572,7 @@ const ContactSection = () => {
                       onBlur={handleInputBlur}
                       required
                       aria-describedby="project-error"
+                      className={errors.project ? "error" : ""}
                     >
                       <option value="">Select Project Type</option>
                       <option value="web-design">Web Design</option>
@@ -441,6 +582,11 @@ const ContactSection = () => {
                       <option value="ui-ux">UI/UX Design</option>
                       <option value="other">Other</option>
                     </select>
+                    {errors.project && (
+                      <span className="error-message" id="project-error">
+                        {errors.project}
+                      </span>
+                    )}
                   </div>
 
                   <div className="form-group">
@@ -454,14 +600,20 @@ const ContactSection = () => {
                       onBlur={handleInputBlur}
                       required
                       aria-describedby="budget-error"
+                      className={errors.budget ? "error" : ""}
                     >
                       <option value="">Select Budget</option>
-                      <option value="<1K">Less than 1K</option>
+                      <option value="Less than 1K">Less than 1K</option>
                       <option value="1k-5k">1K - 5K</option>
                       <option value="5k-10k">5K - 10K</option>
                       <option value="10k-25k">10K - 25K</option>
                       <option value="25k+">25K+</option>
                     </select>
+                    {errors.budget && (
+                      <span className="error-message" id="budget-error">
+                        {errors.budget}
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -478,7 +630,13 @@ const ContactSection = () => {
                     placeholder="Tell me about your project..."
                     required
                     aria-describedby="message-error"
+                    className={errors.message ? "error" : ""}
                   ></textarea>
+                  {errors.message && (
+                    <span className="error-message" id="message-error">
+                      {errors.message}
+                    </span>
+                  )}
                 </div>
 
                 <button
@@ -491,12 +649,7 @@ const ContactSection = () => {
                 </button>
 
                 {feedback.message && (
-                  <div 
-                    className={`form-feedback ${feedback.type}`}
-                    role="alert"
-                    aria-live="polite"
-                    id="submit-status"
-                  >
+                  <div className={`form-feedback ${feedback.type}`} role="alert" aria-live="polite" id="submit-status">
                     {feedback.message}
                   </div>
                 )}
