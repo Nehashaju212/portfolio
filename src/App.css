@@ -1,0 +1,111 @@
+.App {
+  text-align: left;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #000;
+  color: white;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Global Styles */
+.section {
+  padding: 100px 2rem;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-number {
+  font-size: 8rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.05);
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.highlight {
+  background: linear-gradient(45deg, #7a87fb, #ffd49c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn {
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #7a87fb, #ffd49c);
+  color: #000;
+  box-shadow: 0 10px 30px rgba(122, 135, 251, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 15px 40px rgba(122, 135, 251, 0.4);
+}
+
+.btn-secondary:hover {
+  border-color: #7a87fb;
+  color: #7a87fb;
+  box-shadow: 0 10px 30px rgba(122, 135, 251, 0.2);
+}
+
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+
+  .section {
+    padding: 60px 1rem;
+  }
+
+  .section-number {
+    font-size: 4rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}
