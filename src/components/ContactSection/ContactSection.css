@@ -2,7 +2,7 @@
   background: #000;
   position: relative;
   overflow: hidden;
-  padding: 3rem 0; /* Reduced from default */
+  padding: 3rem 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@
   display: flex;
   align-items: flex-start;
   gap: 2rem;
-  margin-bottom: 1.5rem; /* Reduced from 4rem */
+  margin-bottom: 1.5rem;
 }
 
 .contact-title-section {
@@ -20,18 +20,18 @@
 }
 
 .contact-subtitle {
-  font-size: 0.9rem; /* Slightly smaller */
+  font-size: 0.9rem;
   color: #7a87fb;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-top: 0.5rem; /* Reduced from 1rem */
+  margin-top: 0.5rem;
 }
 
 .contact-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem; /* Reduced from 4rem */
+  gap: 3rem;
   align-items: start;
 }
 
@@ -45,26 +45,26 @@
 }
 
 .contact-description {
-  margin-bottom: 2rem; /* Reduced from 3rem */
+  margin-bottom: 2rem;
 }
 
 .contact-description p {
-  font-size: 0.9rem; /* Slightly smaller */
-  line-height: 1.6; /* Reduced from 1.8 */
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.8);
   letter-spacing: 0.5px;
 }
 
 .contact-details {
-  margin-bottom: 2rem; /* Reduced from 3rem */
+  margin-bottom: 2rem;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1rem; /* Reduced from 1.5rem */
-  padding: 0.8rem; /* Reduced from 1rem */
+  margin-bottom: 1rem;
+  padding: 0.8rem;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
@@ -96,9 +96,14 @@
   box-shadow: 0 8px 25px rgba(122, 135, 251, 0.15);
 }
 
+.contact-item:focus {
+  outline: 2px solid #7a87fb;
+  outline-offset: 2px;
+}
+
 .contact-icon {
-  font-size: 1.3rem; /* Slightly smaller */
-  width: 36px; /* Reduced from 40px */
+  font-size: 1.3rem;
+  width: 36px;
   height: 36px;
   display: flex;
   align-items: center;
@@ -118,7 +123,7 @@
 }
 
 .contact-label {
-  font-size: 0.75rem; /* Slightly smaller */
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.6);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -126,7 +131,7 @@
 }
 
 .contact-value {
-  font-size: 0.95rem; /* Slightly smaller */
+  font-size: 0.95rem;
   color: white;
   font-weight: 500;
   transition: color 0.3s ease;
@@ -136,76 +141,9 @@
   color: #7a87fb;
 }
 
-.social-section {
-  margin-bottom: 2rem;
-}
-
-.social-section-title {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
-}
-
-.social-links {
-  display: flex;
-  gap: 0.8rem; /* Slightly reduced */
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
-}
-
-.social-link {
-  padding: 0.6rem 1.2rem; /* Reduced padding */
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 25px;
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  font-size: 0.85rem; /* Slightly smaller */
-  font-weight: 500;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.social-link::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, #7a87fb, #ffd49c);
-  transition: left 0.3s ease;
-  z-index: -1;
-}
-
-.social-link:hover::before {
-  left: 0;
-}
-
-.social-link:hover {
-  border-color: #7a87fb;
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(122, 135, 251, 0.3);
-}
-
 .qr-section {
   margin-top: 1.5rem;
 }
-
-/* .qr-section-title {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 1rem;
-  text-align: center;
-} */
 
 .qr-codes {
   display: flex;
@@ -219,28 +157,6 @@
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
-}
-
-.qr-placeholder {
-  width: 100px;
-  height: 100px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.5);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.qr-placeholder:hover {
-  border-color: #7a87fb;
-  background: rgba(122, 135, 251, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(122, 135, 251, 0.2);
 }
 
 .qr-label {
@@ -285,6 +201,11 @@
   box-shadow: 0 4px 12px rgba(122, 135, 251, 0.3);
 }
 
+.qr-label:focus {
+  outline: 2px solid #7a87fb;
+  outline-offset: 2px;
+}
+
 .contact-form-container {
   opacity: 0;
   transform: translateX(30px);
@@ -298,10 +219,10 @@
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  padding: 1.6rem; /* CHANGED: Reduced from 2.2rem to make form smaller */
+  padding: 1.6rem;
   backdrop-filter: blur(20px);
   transition: all 0.3s ease;
-  min-height: 420px; /* CHANGED: Reduced from 550px to make form smaller */
+  min-height: 420px;
 }
 
 .contact-form:hover {
@@ -310,7 +231,7 @@
 }
 
 .form-group {
-  margin-bottom: 1rem; /* CHANGED: Reduced from 1.4rem to make form more compact */
+  margin-bottom: 1rem;
 }
 
 .form-row {
@@ -321,9 +242,9 @@
 
 .form-group label {
   display: block;
-  font-size: 0.85rem; /* Slightly smaller */
+  font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 0.4rem; /* CHANGED: Reduced from 0.6rem to make form more compact */
+  margin-bottom: 0.4rem;
   font-weight: 500;
   transition: color 0.3s ease;
 }
@@ -336,18 +257,17 @@
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 0.9rem; /* CHANGED: Reduced from 1.2rem to make inputs smaller */
+  padding: 0.9rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   color: white;
-  font-size: 0.9rem; /* Slightly smaller */
+  font-size: 0.9rem;
   transition: all 0.3s ease;
   font-family: inherit;
   position: relative;
 }
 
-/* Dropdown styling for better visibility */
 .form-group select {
   cursor: pointer;
   appearance: none;
@@ -365,14 +285,6 @@
   padding: 0.5rem;
 }
 
-.form-group select option:hover {
-  background: rgba(122, 135, 251, 0.2);
-}
-
-.form-group select option:checked {
-  background: rgba(122, 135, 251, 0.3);
-}
-
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
@@ -385,14 +297,22 @@
 
 .form-group textarea {
   resize: vertical;
-  min-height: 100px; /* CHANGED: Reduced from 140px to make textarea smaller */
+  min-height: 100px;
 }
 
 .form-submit {
   width: 100%;
-  margin-top: 1.2rem; /* CHANGED: Reduced from 2rem to bring submit button closer */
+  margin-top: 1.2rem;
   position: relative;
   overflow: hidden;
+  padding: 1rem 2rem;
+  background: linear-gradient(45deg, #7a87fb, #ffd49c);
+  border: none;
+  border-radius: 10px;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .form-submit::before {
@@ -408,6 +328,16 @@
 
 .form-submit:hover::before {
   left: 100%;
+}
+
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(122, 135, 251, 0.3);
+}
+
+.form-submit:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 .form-feedback {
@@ -443,18 +373,18 @@
 
 .floating-envelope {
   position: absolute;
-  font-size: 2.5rem; /* Slightly smaller */
+  font-size: 2.5rem;
   color: rgba(122, 135, 251, 0.2);
-  top: 10%; /* Adjusted position */
+  top: 10%;
   right: 15%;
   animation: float 7s ease-in-out infinite;
 }
 
 .floating-arrow {
   position: absolute;
-  font-size: 1.8rem; /* Slightly smaller */
+  font-size: 1.8rem;
   color: rgba(255, 212, 156, 0.3);
-  bottom: 20%; /* Adjusted position */
+  bottom: 20%;
   left: 10%;
   animation: float 5s ease-in-out infinite reverse;
 }
@@ -477,7 +407,18 @@
   animation: pulse 4s ease-in-out infinite;
 }
 
-/* Removed cursor trail effect */
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 @keyframes slideInLeft {
   from {
@@ -572,20 +513,11 @@
     min-height: auto;
   }
 
-  .social-links {
-    justify-content: center;
-  }
-
   .qr-codes {
     gap: 0.8rem;
   }
 
-  .qr-placeholder {
-    width: 65px;
-    height: 65px;
-  }
-
   .floating-elements {
-    display: none; /* Hide floating elements on mobile */
+    display: none;
   }
 }

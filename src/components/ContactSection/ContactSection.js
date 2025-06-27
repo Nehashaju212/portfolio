@@ -33,6 +33,44 @@ const ContactSection = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const sectionRef = useRef(null)
 
+  // SEO Structured Data
+  const contactStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Neha Shaju - UI/UX Designer",
+    "description": "Get in touch with Neha Shaju for UI/UX design, web development, and poster design projects. Available for freelance opportunities worldwide.",
+    "url": "https://nehashaju.com/contact",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Neha Shaju",
+      "email": "nehashaju212@gmail.com",
+      "telephone": "+91 94958 16213",
+      "jobTitle": "UI/UX Designer & Computer Science Student",
+      "availableLanguage": ["English", "Hindi", "Malayalam"],
+      "serviceArea": {
+        "@type": "Place",
+        "name": "Worldwide"
+      },
+      "offers": [
+        {
+          "@type": "Service",
+          "name": "UI/UX Design",
+          "description": "User interface and user experience design services"
+        },
+        {
+          "@type": "Service", 
+          "name": "Web Development",
+          "description": "Frontend web development using React and modern technologies"
+        },
+        {
+          "@type": "Service",
+          "name": "Poster Design", 
+          "description": "Creative poster and graphic design services"
+        }
+      ]
+    }
+  }
+
   // Mouse tracking for interactive effects
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -215,215 +253,266 @@ const ContactSection = () => {
   }
 
   return (
-    <section id="contact" className="contact-section section" ref={sectionRef}>
-      <div className="container">
-        <div className="contact-header">
-          <div className="contact-title-section">
-            <h2 className="section-title">
-              Have idea about project? <span className="highlight">✦</span>
-            </h2>
-            <p className="contact-subtitle">LET'S START DESIGNING YOUR PROJECT</p>
-          </div>
-        </div>
+    <>
+      {/* SEO Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactStructuredData) }}
+      />
+      
+      <section 
+        id="contact" 
+        className="contact-section section" 
+        ref={sectionRef}
+        aria-labelledby="contact-heading"
+        role="main"
+      >
+        <div className="container">
+          <header className="contact-header">
+            <div className="contact-title-section">
+              <h1 id="contact-heading" className="section-title">
+                Have idea about project? <span className="highlight" aria-hidden="true">✦</span>
+              </h1>
+              <p className="contact-subtitle">LET'S START DESIGNING YOUR PROJECT</p>
+            </div>
+          </header>
 
-        <div className="contact-content">
-          <div className="contact-info">
-            <div className="contact-description">
-              <p>
-                Ready to bring your vision to life? Let's collaborate and create something amazing together. I
-                specialize in modern, interactive designs that captivate and convert.
-              </p>
+          <div className="contact-content">
+            <div className="contact-info">
+              <div className="contact-description">
+                <p>
+                  Ready to bring your vision to life? Let's collaborate and create something amazing together. I
+                  specialize in modern, interactive designs that captivate and convert.
+                </p>
+              </div>
+
+              <div className="contact-details" role="region" aria-label="Contact Information">
+                <div
+                  className="contact-item"
+                  onClick={() => copyToClipboard("nehashaju212@gmail.com", "Email")}
+                  onKeyDown={(e) => e.key === 'Enter' && copyToClipboard("nehashaju212@gmail.com", "Email")}
+                  title="Click to copy email"
+                  role="button"
+                  tabIndex="0"
+                  aria-label="Email address: nehashaju212@gmail.com. Click to copy."
+                >
+                  <div className="contact-icon" aria-hidden="true">📧</div>
+                  <div className="contact-text">
+                    <span className="contact-label">Email</span>
+                    <span className="contact-value">nehashaju212@gmail.com</span>
+                  </div>
+                </div>
+
+                <div
+                  className="contact-item"
+                  onClick={() => copyToClipboard("+91 94958 16213", "Phone")}
+                  onKeyDown={(e) => e.key === 'Enter' && copyToClipboard("+91 94958 16213", "Phone")}
+                  title="Click to copy phone number"
+                  role="button"
+                  tabIndex="0"
+                  aria-label="Phone number: +91 94958 16213. Click to copy."
+                >
+                  <div className="contact-icon" aria-hidden="true">📱</div>
+                  <div className="contact-text">
+                    <span className="contact-label">Phone</span>
+                    <span className="contact-value">+91 94958 16213</span>
+                  </div>
+                </div>
+
+                <div className="contact-item" role="button" tabIndex="0">
+                  <div className="contact-icon" aria-hidden="true">📍</div>
+                  <div className="contact-text">
+                    <span className="contact-label">Location</span>
+                    <span className="contact-value">Available Worldwide</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="qr-section">
+                <h3 className="sr-only">Social Media Links</h3>
+                <div className="qr-codes">
+                  <div className="qr-code">
+                    <a
+                      href="https://www.instagram.com/_neha.shaju_"
+                      className="qr-label"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Follow Neha Shaju on Instagram"
+                    >
+                      Instagram
+                    </a>
+                  </div>
+                  <div className="qr-code">
+                    <a
+                      href="mailto:nehashaju212@gmail.com"
+                      className="qr-label"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Send email to Neha Shaju"
+                    >
+                      Gmail
+                    </a>
+                  </div>
+                  <div className="qr-code">
+                    <a
+                      href="https://github.com/Nehashaju212"
+                      className="qr-label"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="View Neha Shaju's GitHub profile"
+                    >
+                      Github
+                    </a>
+                  </div>
+                  <div className="qr-code">
+                    <a
+                      href="https://www.linkedin.com/in/nehashaju212"
+                      className="qr-label"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Connect with Neha Shaju on LinkedIn"
+                    >
+                      LinkedIn
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="contact-details">
-              <div
-                className="contact-item"
-                onClick={() => copyToClipboard("nehashaju212@gmail.com", "Email")}
-                title="Click to copy email"
+            <div className="contact-form-container">
+              <form 
+                className="contact-form" 
+                onSubmit={handleSubmit}
+                aria-labelledby="contact-form-heading"
+                noValidate
               >
-                <div className="contact-icon">📧</div>
-                <div className="contact-text">
-                  <span className="contact-label">Email</span>
-                  <span className="contact-value">nehashaju212@gmail.com</span>
-                </div>
-              </div>
-
-              <div
-                className="contact-item"
-                onClick={() => copyToClipboard("+1 (555) 123-4567", "Phone")}
-                title="Click to copy phone number"
-              >
-                <div className="contact-icon">📱</div>
-                <div className="contact-text">
-                  <span className="contact-label">LinkedIn</span>
-                  <span className="contact-value">+91 94958 16213</span>
-                </div>
-              </div>
-
-              <div className="contact-item">
-                <div className="contact-icon">📍</div>
-                <div className="contact-text">
-                  <span className="contact-label">Location</span>
-                  <span className="contact-value">Available Worldwide</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="qr-section">
-              <div className="qr-codes">
-                <div className="qr-code">
-                  <a
-                    href="https://www.instagram.com/_neha.shaju_"
-                    className="qr-label"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Instagram
-                  </a>
-                </div>
-                <div className="qr-code">
-                  <a
-                    href="mailto:nehashaju212@gmail.com"
-                    className="qr-label"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Gmail
-                  </a>
-                </div>
-                <div className="qr-code">
-                  <a
-                    href="https://github.com/Nehashaju212"
-                    className="qr-label"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Github
-                  </a>
-                </div>
-                <div className="qr-code">
-                  <a
-                    href="https://www.linkedin.com/in/nehashaju212"
-                    className="qr-label"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    LinkedIn
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="contact-form-container">
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="name">Full Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  onFocus={handleInputFocus}
-                  onBlur={handleInputBlur}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="email">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  onFocus={handleInputFocus}
-                  onBlur={handleInputBlur}
-                  required
-                />
-              </div>
-
-              <div className="form-row">
+                <h2 id="contact-form-heading" className="sr-only">Contact Form</h2>
+                
                 <div className="form-group">
-                  <label htmlFor="project">Project Type</label>
-                  <select
-                    id="project"
-                    name="project"
-                    value={formData.project}
+                  <label htmlFor="name">Full Name *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
                     onChange={handleInputChange}
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
                     required
-                  >
-                    <option value="">Select Project Type</option>
-                    <option value="web-design">Web Design</option>
-                    <option value="web-development">Web Development</option>
-                    <option value="mobile-app">Mobile App Design</option>
-                    <option value="poster-design">Poster Design</option>
-                    <option value="ui-ux">UI/UX Design</option>
-                    <option value="other">Other</option>
-                  </select>
+                    aria-describedby="name-error"
+                    autoComplete="name"
+                  />
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="budget">Budget Range</label>
-                  <select
-                    id="budget"
-                    name="budget"
-                    value={formData.budget}
+                  <label htmlFor="email">Email Address *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
                     onChange={handleInputChange}
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
                     required
-                  >
-                    <option value="">Select Budget</option>
-                    <option value=">1K"> Less than 1K</option>
-                    <option value="1k-5k">1K - 5K</option>
-                    <option value="5k-10k">5K - 10K</option>
-                    <option value="10k-25k">10K - 25K</option>
-                    <option value="25k+">25K+</option>
-                  </select>
+                    aria-describedby="email-error"
+                    autoComplete="email"
+                  />
                 </div>
-              </div>
 
-              <div className="form-group">
-                <label htmlFor="message">Project Details</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="3"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  onFocus={handleInputFocus}
-                  onBlur={handleInputBlur}
-                  placeholder="Tell me about your project..."
-                  required
-                ></textarea>
-              </div>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="project">Project Type *</label>
+                    <select
+                      id="project"
+                      name="project"
+                      value={formData.project}
+                      onChange={handleInputChange}
+                      onFocus={handleInputFocus}
+                      onBlur={handleInputBlur}
+                      required
+                      aria-describedby="project-error"
+                    >
+                      <option value="">Select Project Type</option>
+                      <option value="web-design">Web Design</option>
+                      <option value="web-development">Web Development</option>
+                      <option value="mobile-app">Mobile App Design</option>
+                      <option value="poster-design">Poster Design</option>
+                      <option value="ui-ux">UI/UX Design</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
 
-              <button
-                type="submit"
-                className={`btn btn-primary form-submit ${isSubmitting ? "sending" : ""}`}
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
+                  <div className="form-group">
+                    <label htmlFor="budget">Budget Range *</label>
+                    <select
+                      id="budget"
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleInputChange}
+                      onFocus={handleInputFocus}
+                      onBlur={handleInputBlur}
+                      required
+                      aria-describedby="budget-error"
+                    >
+                      <option value="">Select Budget</option>
+                      <option value="<1K">Less than 1K</option>
+                      <option value="1k-5k">1K - 5K</option>
+                      <option value="5k-10k">5K - 10K</option>
+                      <option value="10k-25k">10K - 25K</option>
+                      <option value="25k+">25K+</option>
+                    </select>
+                  </div>
+                </div>
 
-              {feedback.message && <div className={`form-feedback ${feedback.type}`}>{feedback.message}</div>}
-            </form>
+                <div className="form-group">
+                  <label htmlFor="message">Project Details *</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="3"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    onFocus={handleInputFocus}
+                    onBlur={handleInputBlur}
+                    placeholder="Tell me about your project..."
+                    required
+                    aria-describedby="message-error"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  className={`form-submit ${isSubmitting ? "sending" : ""}`}
+                  disabled={isSubmitting}
+                  aria-describedby="submit-status"
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </button>
+
+                {feedback.message && (
+                  <div 
+                    className={`form-feedback ${feedback.type}`}
+                    role="alert"
+                    aria-live="polite"
+                    id="submit-status"
+                  >
+                    {feedback.message}
+                  </div>
+                )}
+              </form>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="floating-elements">
-        <div className="floating-envelope">✉</div>
-        <div className="floating-arrow">→</div>
-        <div className="floating-star">✨</div>
-        <div className="floating-heart">💜</div>
-      </div>
-    </section>
+        <div className="floating-elements" aria-hidden="true">
+          <div className="floating-envelope">✉</div>
+          <div className="floating-arrow">→</div>
+          <div className="floating-star">✨</div>
+          <div className="floating-heart">💜</div>
+        </div>
+      </section>
+    </>
   )
 }
 

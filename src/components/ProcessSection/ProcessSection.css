@@ -2,6 +2,7 @@
   background: #000;
   position: relative;
   overflow: hidden;
+  padding: 4rem 2rem;
 }
 
 .process-header {
@@ -9,6 +10,32 @@
   align-items: flex-start;
   gap: 2rem;
   margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: #7A87FB;
+  display: inline-block;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.section-number {
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-weight: 900;
+  background: linear-gradient(45deg, #7A87FB, #FFD49C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.1;
+  line-height: 1;
+  user-select: none;
 }
 
 .process-steps {
@@ -27,8 +54,9 @@
   transform: translateX(-30px);
   padding: 1.5rem;
   border-radius: 20px;
-  transition: all 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  will-change: transform, opacity;
 }
 
 .process-step:hover {
@@ -100,18 +128,19 @@
 }
 
 .step-icon {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   position: absolute;
-  top: -10px;
-  right: -10px;
+  top: -8px;
+  right: -8px;
   background: linear-gradient(45deg, #7A87FB, #FFD49C);
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  z-index: 2;
 }
 
 .step-num {
@@ -137,12 +166,13 @@
 }
 
 .step-title {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   font-weight: 700;
   color: white;
   margin-bottom: 1rem;
   transition: all 0.3s ease;
   position: relative;
+  line-height: 1.3;
 }
 
 .step-title::after {
@@ -188,10 +218,6 @@
   align-items: center;
 }
 
-.process-step:last-child .step-connector {
-  display: none;
-}
-
 .connector-line {
   width: 2px;
   flex: 1;
@@ -222,18 +248,6 @@
   height: 12px;
   box-shadow: 0 0 20px rgba(122, 135, 251, 0.6);
   animation: pulse 1s infinite, glow 2s ease-in-out infinite alternate;
-}
-
-.process-cta {
-  text-align: center;
-  padding: 3rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.cta-text {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 2rem;
 }
 
 .floating-elements {
@@ -303,6 +317,26 @@
   animation-delay: 1s;
 }
 
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus styles for accessibility */
+.process-step:focus-visible {
+  outline: 2px solid #7A87FB;
+  outline-offset: 4px;
+}
+
+/* Animations */
 @keyframes slideInLeft {
   from {
     opacity: 0;
@@ -355,16 +389,30 @@
   50% { opacity: 1; transform: scale(1.5); }
 }
 
+@keyframes sparkle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(1); }
+  75% { transform: rotate(270deg) scale(1.1); }
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
+  .process-section {
+    padding: 3rem 1rem;
+  }
+  
   .process-header {
     flex-direction: column;
     gap: 1rem;
+    text-align: center;
   }
   
   .process-step {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
+    padding: 1rem;
   }
   
   .step-connector {
@@ -373,5 +421,48 @@
   
   .step-number {
     margin: 0 auto;
+    width: 70px;
+    height: 70px;
+  }
+  
+  .step-content {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .process-steps {
+    max-width: 100%;
+  }
+  
+  .process-step {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .process-step,
+  .floating-elements *,
+  .step-number,
+  .step-title,
+  .step-description {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .process-step {
+    border: 2px solid white;
+  }
+  
+  .step-title {
+    color: white !important;
+  }
+  
+  .step-description {
+    color: rgba(255, 255, 255, 0.9) !important;
   }
 }

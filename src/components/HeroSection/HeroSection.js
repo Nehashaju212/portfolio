@@ -216,7 +216,7 @@ const HeroSection = () => {
         </div>
         
         <div className="text-followers">
-          <div className="text-follower" style={{top: '10%', left: '10%'}}>CREATIVE</div>
+          <div className="text-follower" style={{top: '20%', left: '10%'}}>CREATIVE</div>
           <div className="text-follower" style={{top: '20%', right: '20%'}}>DESIGN</div>
           <div className="text-follower" style={{bottom: '30%', left: '20%'}}>INNOVATION</div>
           <div className="text-follower" style={{bottom: '20%', right: '30%'}}>UX/UI</div>
@@ -235,8 +235,8 @@ const HeroSection = () => {
           <div className="title-section">
             <div className="greeting">Hello, I'm</div>
             <h1 className="main-name">NEHA SHAJU</h1>
-            <p className="subtitle">
-              <span className="highlight">Aspiring UI/UX Designer • Student • Poster Designer • Front End Developer</span> 
+            <p className="subtitle1">
+              <span className="highlight1">Aspiring UI/UX Designer • Student • Poster Designer • Front End Developer</span> 
             </p>
           </div>
           
