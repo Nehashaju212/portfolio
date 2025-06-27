@@ -3,8 +3,6 @@ import "./Footer.css"
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
-  const skills = []
-
   return (
     <footer className="footer">
       <div className="container">
@@ -62,18 +60,6 @@ const Footer = () => {
               </div>
             </div>
           </div>
-
-          {/* Remove this entire section:
-          <div className="footer-skills">
-            <div className="skills-container">
-              {skills.map((skill, index) => (
-                <div key={index} className="skill-badge">
-                  {skill}
-                </div>
-              ))}
-            </div>
-          </div>
-          */}
         </div>
 
         <div className="footer-bottom">

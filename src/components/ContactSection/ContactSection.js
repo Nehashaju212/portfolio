@@ -32,9 +32,8 @@ const ContactSection = () => {
   const [feedback, setFeedback] = useState({ type: "", message: "" })
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const sectionRef = useRef(null)
-  const cursorTrailRef = useRef([])
 
-  // Mouse tracking for interactive effects (removed cursor trail)
+  // Mouse tracking for interactive effects
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
@@ -184,8 +183,6 @@ const ContactSection = () => {
         message: "✅ Message sent successfully! I'll get back to you within 24 hours.",
       })
 
-      // No animations - just show the feedback message
-
       setFormData({
         name: "",
         email: "",
@@ -275,45 +272,44 @@ const ContactSection = () => {
             <div className="qr-section">
               <div className="qr-codes">
                 <div className="qr-code">
-                  
-                   <a 
-                  href="https://www.instagram.com/_neha.shaju_" 
-                  className="qr-label" 
-                  target="_blank" 
-                  rel="noopener noreferrer">
-                  Instagram
-                </a>
+                  <a
+                    href="https://www.instagram.com/_neha.shaju_"
+                    className="qr-label"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Instagram
+                  </a>
                 </div>
                 <div className="qr-code">
-                  
-                   <a 
-                  href="mailto:nehashaju212@gmail.com" 
-                  className="qr-label" 
-                  target="_blank" 
-                  rel="noopener noreferrer">
-                  Gmail
-                </a>
+                  <a
+                    href="mailto:nehashaju212@gmail.com"
+                    className="qr-label"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Gmail
+                  </a>
                 </div>
                 <div className="qr-code">
-                  
-                   <a 
-                  href="https://github.com/Nehashaju212" 
-                  className="qr-label" 
-                  target="_blank" 
-                  rel="noopener noreferrer">
-                  Github
-                </a>
+                  <a
+                    href="https://github.com/Nehashaju212"
+                    className="qr-label"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Github
+                  </a>
                 </div>
                 <div className="qr-code">
-                  
-                 <a 
-                  href="https://www.linkedin.com/in/nehashaju212" 
-                  className="qr-label" 
-                  target="_blank" 
-                  rel="noopener noreferrer">
-                  LinkedIn
-                </a>
-
+                  <a
+                    href="https://www.linkedin.com/in/nehashaju212"
+                    className="qr-label"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LinkedIn
+                  </a>
                 </div>
               </div>
             </div>
