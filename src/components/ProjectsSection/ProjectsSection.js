@@ -36,6 +36,18 @@ const ProjectsSection = () => {
     },
     {
       id: 3,
+      title: "Weather Forecast App",
+      category: "WEB DEVELOPMENT",
+      image: "/weatherapp.png",
+      tags: ["React", "CSS", "Responsive Design"],
+      description:
+        "A responsive weather application built using React that dynamically changes its background based on current weather conditions like sunny, cloudy, or rainy. It features a responsive UI optimized for both desktop and mobile views, designed to demonstrate frontend development skills.",
+      url: "https://weather-nxha.netlify.app/",
+      featured: false,
+      year: "2023", 
+    },
+    {
+      id: 4,
       title: "PharmaAssist - Medicine Delivery Platform",
       category: "WEB APPLICATION",
       image: "/PharmAssist.png",
@@ -47,7 +59,7 @@ const ProjectsSection = () => {
       year: "2025",
     },
     {
-      id: 4,
+      id: 5,
       title: "Virtual Calculator with Gesture Control",
       category: "AI PROJECT",
       image: "/calculator.png",
@@ -59,7 +71,7 @@ const ProjectsSection = () => {
       year: "2023",
     },
     {
-      id: 5,
+      id: 6,
       title: "Sign Language Translator",
       category: "AI PROJECT",
       image: "/sign.png",
@@ -71,11 +83,11 @@ const ProjectsSection = () => {
       year: "2024",
     },
     {
-      id: 6,
+      id: 7,
       title: "GoodTurn - Freelance Showcase Platform",
       category: "WEB APPLICATION",
       image: "/goodturn.jpg",
-      tags: ["UI/UX", "Web App", "React", "Freelancing", "Portfolio"],
+      tags: ["UI/UX", "Web App", "React", "Freelancing"],
       description:
         "A modern freelance showcase platform designed to help freelancers connect with clients, display their work, and grow their business with intuitive navigation and professional presentation.",
       url: "https://github.com/Nehashaju212/goodturn",
@@ -83,7 +95,7 @@ const ProjectsSection = () => {
       year: "2023",
     },
     {
-      id: 7,
+      id: 8,
       title: "Credit Card Fraud Detection System",
       category: "MACHINE LEARNING",
       image: "/fraud.png",
@@ -212,11 +224,7 @@ const ProjectsSection = () => {
                         </span>
                       ))}
                     </div>
-                    {project.featured && (
-                      <div className="featured-badge" aria-label="Featured project">
-                        ⭐
-                      </div>
-                    )}
+                    
                   </div>
                 </div>
 
