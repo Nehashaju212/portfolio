@@ -38,7 +38,7 @@ const ProjectsSection = () => {
       id: 3,
       title: "Weather Forecast App",
       category: "WEB DEVELOPMENT",
-      image: "/weatherapp.png",
+      image: "/weather.png",
       tags: ["React", "CSS", "Responsive Design"],
       description:
         "A responsive weather application built using React that dynamically changes its background based on current weather conditions like sunny, cloudy, or rainy. It features a responsive UI optimized for both desktop and mobile views, designed to demonstrate frontend development skills.",
