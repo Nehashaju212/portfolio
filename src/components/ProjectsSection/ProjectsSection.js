@@ -54,7 +54,7 @@ const ProjectsSection = () => {
       tags: ["UI/UX", "Web App", "React", "Healthcare", "E-commerce"],
       description:
         "A comprehensive medicine delivery platform that connects local pharmacies to customers with real-time tracking, inventory management, and seamless order processing for healthcare accessibility.",
-      url: "https://github.com/Nehashaju212/pharmaassist",
+      url: "https://github.com/Pharm-Assist/pharmassistt",
       featured: true,
       year: "2025",
     },
@@ -66,7 +66,7 @@ const ProjectsSection = () => {
       tags: ["Python", "OpenCV", "Machine Learning", "Gesture Control", "Computer Vision"],
       description:
         "An innovative virtual calculator that uses advanced hand gesture recognition through OpenCV and machine learning algorithms to perform arithmetic operations without physical input devices.",
-      url: "https://github.com/Nehashaju212/virtual-calculator",
+      url: "https://github.com/Nehashaju212/Virtual-Calculator",
       featured: false,
       year: "2023",
     },

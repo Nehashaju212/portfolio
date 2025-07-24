@@ -97,22 +97,18 @@ const AboutSection = () => {
               
               <div className="about-description">
                 <p className="about-detail">
-                  I'm <strong>Neha Shaju</strong>, a Computer Science student with a passion for building purposeful digital solutions. I enjoy working at the intersection of design, development, and data, blending creativity with technology to solve real-world problems.
+                  Hi, I’m <strong>Neha Shaju</strong> — a Computer Science student who enjoys exploring how technology can make everyday life better.
+                  I love building simple, meaningful digital solutions that blend creativity with functionality.
                 </p>
-                
+
                 <p className="about-detail">
-                  Skilled in <em>Python, Java, React, R (for data analytics)</em>, and <em>UI/UX design with Figma</em>, I've developed projects like <strong>GoodTurn</strong>—a freelance showcase platform, <strong>PharmaAssist</strong>—a medicine delivery app, and a <strong>Sign Language Translator</strong> powered by computer vision and AI.
+                  From design to code, I enjoy creating things that solve real problems. Whether it’s coding, designing, or working on projects that make a difference, I believe in learning by doing.
                 </p>
-                
+
                 <p className="about-detail">
-                  My journey goes beyond coding—I actively lead tech communities as the <strong>Vice President of IEDC Sahrdaya</strong> and <strong>Media Lead at TinkerHub SCET</strong>, while contributing to events like <strong>TEDx Sahrdaya CET</strong> and <strong>IEEE Women in Computing</strong>.
-                </p>
-                
-                <p className="about-detail">
-                  I believe in learning by doing, solving problems with empathy, and creating experiences that matter. Whether it's a line of code, a pixel-perfect design, or an innovative idea, I aim to make a positive impact through my work.
-                </p>
-              </div>
-              
+                  I enjoy trying new things, connecting with people, and approaching problems with empathy and curiosity. Currently, I’m exploring tech through hands-on projects, student communities, and small steps that help me grow — one line of code, one design, and one idea at a time.
+                </p>         
+              </div>             
               <div className="about-stats" role="region" aria-label="Professional Statistics">
                 <div className="stat-item">
                   <span className="stat-number" aria-label="2 plus years of experience">2+</span>
